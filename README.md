@@ -1,4 +1,4 @@
-# Projeto de simulação de plano de aposentadoria privada
+# Projeto de simulação de plano de previdência privada
 
 Teste para vaga de desenvolvedor da 4quality
 
