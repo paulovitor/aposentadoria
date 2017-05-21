@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Aposentadoria</title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container">
+        <h1>Simulação de previdência privada</h1>
+        <div class="alert alert-success">
+            <p th:text="'Salário total: ' + ${#numbers.formatDecimal(contribuicao.getTotalSalario(),2,'POINT',2,'COMMA')}"></p>
+            <p th:text="'Contribuição total: ' + ${#numbers.formatDecimal(contribuicao.getTotalContribuicao(),2,'POINT',2,'COMMA')}"></p>
+        </div>
+        <div>
+            <form th:action="@{/simular}" th:object="${contribuicao}" method="post">
+                <div class="form-group">
+                    <label for="nome">Nome completo</label>
+                    <input type="text" required="true" class="form-control" id="nome" th:field="*{usuario.nome}" />
+                </div>
+                <div class="form-group">
+                    <label for="salario">Salário</label>
+                    <input type="number" required="true" class="form-control" id="salario" th:field="*{usuario.salario}" />
+                </div>
+                <div class="form-group">
+                    <label for="anos">Anos</label>
+                    <input type="number" required="true" min="2" max="35" class="form-control" id="anos" th:field="*{anos}" />
+                </div>
+                <div class="form-group">
+                    <label for="x">Taxa X</label>
+                    <input type="number" required="true" min="1" max="4" step="any" class="form-control" id="x" th:field="*{x}" />
+                </div>
+                <div class="form-group">
+                    <label for="y">Taxa Y</label>
+                    <input type="number" required="true" max="8" step="any" class="form-control" id="y" th:field="*{y}" />
+                </div>
+                <button type="submit" class="btn btn-success">Simular</button>
+            </form>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>
